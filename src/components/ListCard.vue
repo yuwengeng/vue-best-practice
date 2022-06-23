@@ -33,7 +33,7 @@
     </li>
     <h2 class="noData" v-if="this.$store.state.activityList.length == 0">暂无数据...</h2>
 
-    <p class="noMore" v-if="length">没有更多了</p>
+    <p class="noMore" v-if="length && this.$store.state.activityList.length > 0">没有更多了</p>
     <p class="noMore more" v-else-if="this.$store.state.activityList.length && !length" @click="handleMore">
       点击加载更多</p>
 
@@ -56,12 +56,12 @@ export default {
   },
   computed: {
     length() {
-      const _ = this.$store.state.activityList;
-      console.log('_', _);
+      const _ = this.$store.state.lastData;
+      // console.log('_', _);
 
       // 判断分页：
       if (_) {
-        return _.length < 12 && _.length > 0
+        return _.length < 12 && _.length >= 0
       }
       return false;
     },
@@ -88,7 +88,7 @@ export default {
   display: flex;
   min-inline-size: 300px;
   flex-wrap: wrap;
-
+  align-content: flex-start
 }
 
 ul {
@@ -248,6 +248,7 @@ a {
     text-align: center;
     transform: none;
     position: initial;
+    padding: 20px 0;
   }
 }
 </style>

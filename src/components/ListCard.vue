@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: "ListCard",
@@ -74,11 +74,6 @@ export default {
       this.$store.dispatch("loadData", { id: this.$store.state.id, index: index })
     }
   },
-  created() {
-    // console.log('@@@', this.activityList);
-
-
-  },
 };
 </script>
 
@@ -89,8 +84,7 @@ export default {
   /* top: 50%;
   transform: translateY(-50%); */
   width: 80vw;
-  /* height: 70vh; */
-
+  min-height: -webkit-fill-available;
   display: flex;
   min-inline-size: 300px;
   flex-wrap: wrap;
